@@ -11,20 +11,27 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
-    <header>
-      <h1>Online Course Registration</h1>
-
-      <nav>
-        <a href="/">Home</a>
-        <a href="/register/">Register</a>
-        <a href="/registrations/">Registrations</a>
-      </nav>
+    <header class="navbar">
+      <div class="container">
+        <a href="home.html" class="brand">Online<span>Course</span></a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="home.html" class="nav-link active">Home</a></li>
+            <li><a href="{% url 'register' %}" class="nav-link">Register</a></li>
+            <li>
+              <a href="list_registrations.html" class="nav-link">Registrations</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>{% block content %} {% endblock %}</main>
 
-    <footer>
-      <p>&copy; 2026 Online Course Registration</p>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Online Course Registration. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="{% static 'js/script.js' %}"></script>
