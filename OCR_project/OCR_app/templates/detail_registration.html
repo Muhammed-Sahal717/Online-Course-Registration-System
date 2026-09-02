@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %}Registration Details - Online Course
+Registration{% endblock %} {% block content %}
+
+<div class="registration-detail">
+  <h2>Registration Details</h2>
+
+  {% if registration.profile_photo %}
+  <img
+    src="{{ registration.profile_photo.url }}"
+    alt="{{ registration.student_name }}"
+  />
+  {% else %}
+  <p>No profile photo uploaded.</p>
+  {% endif %}
+
+  <h3>{{ registration.student_name }}</h3>
+
+  <p>
+    <strong>Email:</strong>
+    {{ registration.email }}
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    {{ registration.phone }}
+  </p>
+
+  <p>
+    <strong>Course:</strong>
+    {{ registration.course }}
+  </p>
+
+  <p>
+    <strong>Qualification:</strong>
+    {{ registration.qualification }}
+  </p>
+
+  <p>
+    <strong>Registration Date:</strong>
+    {{ registration.registration_date }}
+  </p>
+
+  <a href="{% url 'registrations' %}"> Back to Registrations </a>
+
+  {% endblock %}
+</div>

@@ -8,11 +8,20 @@ class CourseRegistrationForm(forms.ModelForm):
         choices=[
             ('Python Programming', 'Python Programming'),
             ('Web Development', 'Web Development'),
-            ('Data Science', 'Data Science'),
             ('Artificial Intelligence', 'Artificial Intelligence'),
-            ('Database Management', 'Database Management'),
         ],
         label='Select Course'
+    )
+    qualification = forms.ChoiceField(
+        choices=[
+            ('10th', '10th'),
+            ('12th', '12th'),
+            ('Diploma', 'Diploma'),
+            ('Bachelor Degree', 'Bachelor Degree'),
+            ('Master Degree', 'Master Degree'),
+            ('Other', 'Other'),
+        ],
+        label='Select Qualification'
     )
 
     class Meta:
@@ -38,9 +47,5 @@ class CourseRegistrationForm(forms.ModelForm):
 
             'phone': forms.TextInput(attrs={
                 'placeholder': 'Enter your phone number'
-            }),
-
-            'qualification': forms.TextInput(attrs={
-                'placeholder': 'Enter your qualification'
             }),
         }
