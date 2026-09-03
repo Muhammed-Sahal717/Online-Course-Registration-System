@@ -1,46 +1,42 @@
-{% extends 'base.html' %} {% block title %}Registration Details - Online Course
-Registration{% endblock %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="registration-detail">
-  <h2>Registration Details</h2>
+{% block title %}Registration Details - Online Course Registration{% endblock %}
 
-  {% if registration.profile_photo %}
-  <img
-    src="{{ registration.profile_photo.url }}"
-    alt="{{ registration.student_name }}"
-  />
-  {% else %}
-  <p>No profile photo uploaded.</p>
-  {% endif %}
+{% block content %}
+<div class="container container-sm">
+  <div class="surface-panel profile-panel">
+    <div class="profile-header">
+      {% if registration.profile_photo %}
+        <img src="{{ registration.profile_photo.url }}" alt="{{ registration.student_name }}" class="profile-avatar">
+      {% else %}
+        <div class="profile-avatar-placeholder">{{ registration.student_name|slice:":1" }}</div>
+      {% endif %}
+      <h2>{{ registration.student_name }}</h2>
+      <span class="badge">{{ registration.course }}</span>
+    </div>
 
-  <h3>{{ registration.student_name }}</h3>
+    <div class="profile-details-grid">
+      <div class="detail-item">
+        <span class="detail-label">Email Address</span>
+        <span class="detail-value">{{ registration.email }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Phone</span>
+        <span class="detail-value">{{ registration.phone }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Qualification</span>
+        <span class="detail-value">{{ registration.qualification }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Registration Date</span>
+        <span class="detail-value">{{ registration.registration_date }}</span>
+      </div>
+    </div>
 
-  <p>
-    <strong>Email:</strong>
-    {{ registration.email }}
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    {{ registration.phone }}
-  </p>
-
-  <p>
-    <strong>Course:</strong>
-    {{ registration.course }}
-  </p>
-
-  <p>
-    <strong>Qualification:</strong>
-    {{ registration.qualification }}
-  </p>
-
-  <p>
-    <strong>Registration Date:</strong>
-    {{ registration.registration_date }}
-  </p>
-
-  <a href="{% url 'registrations' %}"> Back to Registrations </a>
-
-  {% endblock %}
+    <div class="panel-actions">
+      <a href="{% url 'registrations' %}" class="btn btn-secondary">&larr; Back to Registrations</a>
+    </div>
+  </div>
 </div>
+{% endblock %}

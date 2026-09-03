@@ -1,15 +1,22 @@
-{% extends 'base.html' %} {% block title %}Register - Online Course
-Registration{% endblock %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="form-container">
-  <h2>Course Registration</h2>
-  <p>Fill in the details below to register for a course.</p>
+{% block title %}Register - Online Course Registration{% endblock %}
 
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
+{% block content %}
+<div class="container container-sm">
+  <div class="surface-panel">
+    <div class="panel-header">
+      <h2>Course Registration</h2>
+      <p>Complete the form below to lock in your enrollment details.</p>
+    </div>
 
-    <button type="submit">Register</button>
-  </form>
+    <form method="POST" enctype="multipart/form-data" class="app-form">
+      {% csrf_token %}
+      <div class="form-body">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit Registration</button>
+    </form>
+  </div>
 </div>
-
 {% endblock %}

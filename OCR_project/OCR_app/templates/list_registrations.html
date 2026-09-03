@@ -1,51 +1,45 @@
-{% extends 'base.html' %} {% block title %}Registrations - Online Course
-Registration{% endblock %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="registrations-container">
-  <h2>Registered Students</h2>
+{% block title %}Registrations - Online Course Registration{% endblock %}
 
-  {% if registrations %}
-
-  <div class="registration-list">
-    {% for registration in registrations %}
-
-    <div class="registration-card">
-      {% if registration.profile_photo %}
-      <img
-        src="{{ registration.profile_photo.url }}"
-        alt="{{ registration.student_name }}"
-      />
-      {% else %}
-      <p>No profile photo</p>
-      {% endif %}
-
-      <h3>{{ registration.student_name }}</h3>
-
-      <p>
-        <strong>Course:</strong>
-        {{ registration.course }}
-      </p>
-
-      <p>
-        <strong>Qualification:</strong>
-        {{ registration.qualification }}
-      </p>
-
-      <a href="{% url 'registration_detail' registration.id %}">
-        View Details
-      </a>
+{% block content %}
+<div class="container">
+  <div class="list-heading-bar">
+    <div>
+      <h2>Registered Students</h2>
+      <p>Directory of current student enrollments</p>
     </div>
-
-    {% endfor %}
+    <a href="{% url 'register' %}" class="btn btn-primary">Add Registration</a>
   </div>
 
+  {% if registrations %}
+  <div class="student-grid">
+    {% for registration in registrations %}
+    <div class="student-card">
+      <div class="avatar-wrapper">
+        {% if registration.profile_photo %}
+          <img src="{{ registration.profile_photo.url }}" alt="{{ registration.student_name }}" class="avatar">
+        {% else %}
+          <div class="avatar-placeholder">{{ registration.student_name|slice:":1" }}</div>
+        {% endif %}
+      </div>
+      <div class="student-info">
+        <h3 class="student-name">{{ registration.student_name }}</h3>
+        <p class="detail-line"><span class="meta-label">Course:</span> {{ registration.course }}</p>
+        <p class="detail-line"><span class="meta-label">Qualification:</span> {{ registration.qualification }}</p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'registration_detail' registration.id %}" class="btn btn-secondary btn-sm">View Profile</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
   {% else %}
-
-  <p>No registrations found.</p>
-
-  <a href="{% url 'register' %}"> Register Now </a>
-
+  <div class="empty-state">
+    <h3>No registrations found</h3>
+    <p>Get started by creating your first student enrollment record.</p>
+    <a href="{% url 'register' %}" class="btn btn-primary">Register Now</a>
+  </div>
   {% endif %}
 </div>
-
 {% endblock %}

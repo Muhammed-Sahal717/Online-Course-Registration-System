@@ -14,7 +14,6 @@ class CourseRegistrationForm(forms.ModelForm):
     )
     qualification = forms.ChoiceField(
         choices=[
-            ('10th', '10th'),
             ('12th', '12th'),
             ('Diploma', 'Diploma'),
             ('Bachelor Degree', 'Bachelor Degree'),
