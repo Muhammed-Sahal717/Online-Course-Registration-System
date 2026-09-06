@@ -10,6 +10,17 @@ A professional Django-based web application designed to manage student enrollmen
 - **Detailed Profiles:** Individual detail pages for each student to view their complete enrollment information.
 - **Admin Dashboard:** Full integration with the Django admin interface for easy management of registrations (Create, Read, Update, Delete).
 
+## Screenshots
+
+<details>
+  <summary>Click to view screenshots</summary>
+
+  ![Screenshot 1](projectscreenshsots/screenshot-1.png)
+  ![Screenshot 2](projectscreenshsots/screenshot-2.png)
+  ![Screenshot 3](projectscreenshsots/screenshot-3.png)
+  ![Screenshot 4](projectscreenshsots/screenshot-4.png)
+</details>
+
 ## Tech Stack
 
 - **Backend:** Python, Django
